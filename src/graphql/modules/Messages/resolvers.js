@@ -1,4 +1,9 @@
+import { PubSub } from 'graphql-subscriptions';
+
 import Message from "../../../database/models/Message";
+import { MESSAGE_CREATED } from './channels'
+
+const pubsub = new PubSub();
 
 export default {
   Query: {
@@ -6,6 +11,19 @@ export default {
     messagesByRoom: async (_, { room }) => await Message.find({ room: room }).sort({ date:-1 }),
   },
   Mutation: {
-    createMessage: (_, { data }) => Message.create(data),
+    createMessage: async (_, { data }) => {
+      const message = await Message.create(data);
+
+      pubsub.publish(MESSAGE_CREATED, {
+        messageCreated: message,
+      });
+
+      return message;
+    },
+  },
+  Subscription: {
+    messageCreated: {
+      subscribe: () => pubsub.asyncIterator(MESSAGE_CREATED),
+    }
   }
 }
