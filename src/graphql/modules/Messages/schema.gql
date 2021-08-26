@@ -15,8 +15,8 @@ input MessagesInput {
 }
 
 type Query {
-  messages: [Message]!
-  messagesByRoom(room: String!): [Message]!
+  messages: [Message!]!
+  messagesByRoom(room: String!): [Message!]!
 }
 
 type Mutation {
