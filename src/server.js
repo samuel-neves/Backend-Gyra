@@ -1,5 +1,6 @@
 import { ApolloServer } from "apollo-server-express";
 import express from 'express';
+import cors from 'cors';
 import http from 'http';
 import { execute, subscribe } from 'graphql';
 import { SubscriptionServer } from 'subscriptions-transport-ws';
@@ -12,6 +13,13 @@ async function startApolloServer({ typeDefs, resolvers }) {
   const httpServer = http.createServer(app);
 
   const schema = makeExecutableSchema({ typeDefs, resolvers });
+
+  const corsOptions = {
+    origin: 'http://localhost:3000',
+    credentials: true,
+  }
+
+  app.use(cors(corsOptions));
 
   const server = new ApolloServer({
     schema,
