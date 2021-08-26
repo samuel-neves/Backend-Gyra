@@ -14,10 +14,13 @@ async function startApolloServer({ typeDefs, resolvers }) {
 
   const schema = makeExecutableSchema({ typeDefs, resolvers });
 
-  const corsOptions = {
+  const corsOptions = [{
     origin: 'http://localhost:3000',
     credentials: true,
-  }
+  }, {
+    origin: 'https://studio.apollographql.com/sandbox/explorer',
+    credentials: true,
+  }]
 
   app.use(cors(corsOptions));
 
