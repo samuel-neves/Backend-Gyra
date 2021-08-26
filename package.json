@@ -1,0 +1,24 @@
+{
+  "name": "backend-gyra",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:samuel-neves/Backend-Gyra.git",
+  "author": "samuel-neves <samuel212584@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "dev": "npx nodemon --exec babel-node src/index.js",
+    "database": "sudo docker-compose up -d"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.14.8",
+    "@babel/core": "^7.15.0",
+    "@babel/node": "^7.14.9",
+    "@babel/preset-env": "^7.15.0",
+    "nodemon": "^2.0.12"
+  },
+  "dependencies": {
+    "apollo-server": "^3.3.0",
+    "graphql": "^15.5.1",
+    "mongoose": "^6.0.1"
+  }
+}

@@ -1,0 +1,14 @@
+version: '3.8'
+
+services:
+
+  mongo:
+    image: mongo
+    container_name: gyra
+    restart: unless-stopped
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: root
+      MONGO_URL: mongodb://root:root@localhost:27017/
+    ports:
+    - 27017:27017
