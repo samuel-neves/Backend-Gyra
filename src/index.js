@@ -1,5 +1,5 @@
-import server from './server';
+import startApolloServer from './server';
 import typeDefs from './graphql/typeDefs';
 import resolvers from './graphql/resolvers';
 
-server({ typeDefs, resolvers });
+startApolloServer({ typeDefs, resolvers });
