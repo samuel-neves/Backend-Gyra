@@ -11,7 +11,7 @@ export default {
     messagesByRoom: async (_, { room }) => await Message.find({ room: room }).sort({ date:-1 }),
   },
   Mutation: {
-    createMessage: async (_, { data }) => {
+    createMessage: async (_, data) => {
       const message = await Message.create(data);
 
       pubsub.publish(MESSAGE_CREATED, {
