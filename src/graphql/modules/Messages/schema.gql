@@ -20,5 +20,9 @@ type Query {
 }
 
 type Mutation {
-  createMessage(data: MessagesInput!): Message!
+  createMessage(author: String!, room: String!, text: String!): Message!
+}
+
+type Subscription {
+  messageCreated: Message!
 }
