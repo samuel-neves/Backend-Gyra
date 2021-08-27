@@ -8,15 +8,17 @@ type Message {
   created_at: Date!
 }
 
+input MessagesInput {
+  author: String!
+  room: String!
+  text: String!
+}
+
 type Query {
   messages: [Message!]!
   messagesByRoom(room: String!): [Message!]!
 }
 
 type Mutation {
-  createMessage(author: String!, room: String!, text: String!): Message!
-}
-
-type Subscription {
-  messageCreated: Message!
+  createMessage(data: MessagesInput!): Message!
 }
