@@ -1,0 +1,26 @@
+scalar Date
+
+type Room {
+  _id: ID!
+  author: String!
+  name: String!
+}
+
+input RoomInput {
+  author: String!
+  name: String!
+}
+
+type Query {
+  rooms: [Room!]!
+}
+
+type Mutation {
+  userEntered(data: RoomInput!): Room!
+  userExited(data: RoomInput!): Room!
+}
+
+type Subscription {
+  userEnteredSubscription: Room!
+  userExitedSubscription: Room!
+}
